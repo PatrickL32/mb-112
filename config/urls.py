@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from pages.views import HomePageView, AboutPageView
 
-urlpatterns = (
-    path("", HomePageView.as_view(), name="home"),
-    path("about/" , AboutPageView.as_view(),name="about"),
-)
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("pages.urls")),
+    path("posts/", include("posts.urls")),
+]
+
+
